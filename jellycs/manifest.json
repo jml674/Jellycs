@@ -3,14 +3,14 @@
 
   "manifest_version":2,
 
-  "name": "Xosara Games",
-  "description": "This extensions shows the latest games added on xosara.com",
+  "name": "Jellycs Games",
+  "description": "This extensions shows the latest games added on GENERIC.com",
   "version": "1.4",
   "icons": {
       "48": "assets/img/icon-new.png"
   },
   "background": {
-    "scripts": ["assets/jquery.min.js","background.js"]
+    "scripts": ["assets/jquery.min.js","background.js","assets/scripts.js"]
   },
   "browser_action": {
     "default_popup": "popup.html",
