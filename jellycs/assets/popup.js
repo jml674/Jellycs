@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 
-var xosara = xosara || {};
+var jellycs = jellycs || {};
+jellycs.DOMAIN="www.xosara.com";
+jellycs.PROTOCOL="http://";
+jellycs.UTM='?utm_campaign=' + jellycs.DOMAIN + '&utm_medium=chrome-addon&campaign=chrome-addon';
 
-xosara.popup = {
+
+jellycs.popup = {
   htmlString:"",
   init: function(){
-    //console.log("xosara.popup: init");    
+    //console.log("jellycs.popup: init");    
     this.post();
   },
   changeDisplay: function (html_string) {
@@ -24,7 +28,7 @@ xosara.popup = {
       port.postMessage("Hi BackGround");
       port.onMessage.addListener(function(msg) {
             console.log("message received"+ msg);
-            xosara.popup.changeDisplay(msg);
+            jellycs.popup.changeDisplay(msg);
          });
   },
 };
@@ -88,7 +92,7 @@ var TOOLS = {
 
        jQuery('.searchText').val(search);
        var searchText = jQuery('.searchText').val();
-       chrome.tabs.create({url: submitUrl + searchText + UTM});
+       chrome.tabs.create({url: submitUrl + searchText + jellycs.UTM});
 
        return true;
    };
@@ -114,7 +118,7 @@ var TOOLS = {
 
        var href = jQuery(this).attr('href');
 
-       jQuery(this).attr('href', href + UTM);
+       jQuery(this).attr('href', href + jellycs.UTM);
 
    });
     }
@@ -133,9 +137,9 @@ var FBTOOLS = {
 };
 
 jQuery(document).ready(function() {
-    xosara.popup.changeDisplay();
+    jellycs.popup.changeDisplay();
     TOOLS.init();
     FBTOOLS.init();
 });
 
-xosara.popup.init();
+jellycs.popup.init();

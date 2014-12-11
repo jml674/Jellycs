@@ -1,10 +1,13 @@
 var LOCAL_STORAGE_BADGE_CONTENT="htmlBadgesContent";
 var jellycs = jellycs || {};
+jellycs.DOMAIN="www.xosara.com";
+jellycs.PROTOCOL="http://";
+jellycs.UTM='?utm_campaign=' + jellycs.DOMAIN + '&utm_medium=chrome-addon&campaign=chrome-addon';
+
+
 
 jellycs.monitor = {
   BADGES_CONTENT_POLLING_MNS:1,
-  DOMAIN:"www.jellycs.com",
-  PROTOCOL:"http://",
   htmlBadgeContent:"",
   init: function() {
      var that = this;
@@ -23,10 +26,9 @@ jellycs.monitor = {
 jellycs.GAMES = {
    MAX_GAMES:"8",
    HTML:"",
-   UTM:'?utm_campaign=' + jellycs.monitor.DOMAIN + '&utm_medium=chrome-addon&campaign=chrome-addon',
    htmlString : "",
    init: function() {
-      this.HTML = jellycs.monitor.PROTOCOL+ jellycs.monitor.DOMAIN+ "/addon/json/"+this.MAX_GAMES+"/index.html";
+      this.HTML = jellycs.PROTOCOL+ jellycs.DOMAIN+ "/addon/json/"+this.MAX_GAMES+"/index.html";
       chrome.storage.local.get(LOCAL_STORAGE_BADGE_CONTENT,this.init_next);
       chrome.extension.onConnect.addListener(function(port) {
            console.debug("Connected ....."+port.name);
